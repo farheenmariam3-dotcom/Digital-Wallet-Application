@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Digital Wallet Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <h1>Digital Wallet</h1>
+
+        <form method="POST">
+
+    <input
+        type="text"
+        name="username"
+        placeholder="Enter Username"
+        required>
+
+    <input
+        type="password"
+        name="password"
+        placeholder="Enter Password"
+        required>
+
+    <button type="submit">
+        Login
+    </button>
+
+    <br><br>
+
+<a href="/register">
+
+<button type="button">
+
+Register New User
+
+</button>
+
+</a>
+
+</form>
+
+    </div>
+
+</body>
+
+</html>

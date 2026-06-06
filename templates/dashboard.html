@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Digital Wallet Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <h1>Welcome {{ username }}</h1>
+
+    <a href="/balance">
+        <button>💰 Check Balance</button>
+    </a>
+
+    <br><br>
+
+    <a href="/add_money">
+        <button>➕ Add Money</button>
+    </a>
+
+    <br><br>
+
+    <a href="/withdraw_money">
+        <button>➖ Withdraw Money</button>
+    </a>
+
+    <br><br>
+
+    <a href="/transactions">
+        <button>📜 Transaction History</button>
+    </a>
+
+    <br><br>
+
+
+    <a href="/analytics">
+    <button>📊 Analytics</button>
+    </a>
+
+    <br><br>
+    
+    <a href="/">
+        <button>🚪 Logout</button>
+    </a>
+
+    
+
+</div>
+
+</body>
+
+</html>
