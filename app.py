@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Flask, render_template, request, redirect, url_for,session
 import sqlite3
 
@@ -139,6 +141,25 @@ def add_money():
             (new_balance, session["username"])
         )
 
+        now = datetime.now()
+
+        date = now.strftime("%d-%m-%Y")
+        time = now.strftime("%H:%M:%S")
+
+        cursor.execute(
+                """
+                INSERT INTO transactions
+                (username, amount, type, date, time)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (
+                    session["username"],
+                    amount,
+                    "Credit",
+                    date,
+                    time
+                )
+            )
         conn.commit()
         conn.close()
 
@@ -174,6 +195,28 @@ def withdraw_money():
                 "UPDATE users SET balance=? WHERE username=?",
                 (new_balance, session["username"])
             )
+
+            now = datetime.now()
+
+            date = now.strftime("%d-%m-%Y")
+            time = now.strftime("%H:%M:%S")
+
+            cursor.execute(
+                """
+                INSERT INTO transactions
+                (username, amount, type, date, time)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+            (
+                session["username"],
+                amount,
+                "Debit",
+                date,
+                time
+            )
+            )   
+            
+
 
             conn.commit()
 
