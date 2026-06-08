@@ -259,38 +259,46 @@ def transactions():
 @app.route("/analytics")
 def analytics():
 
+    if "username" not in session:
+        return redirect(url_for("home"))
+
     conn = sqlite3.connect("wallet.db")
     cursor = conn.cursor()
 
+    # Total Credit
     cursor.execute(
-    """
-    SELECT SUM(amount)
-    FROM transactions
-    WHERE username=? AND type='Credit'
-    """,
-    (session["username"],)
-)
-    
-    cursor.execute(
-    """
-    SELECT SUM(amount)
-    FROM transactions
-    WHERE username=? AND type='Debit'
-    """,
-    (session["username"],)
-)
-    
-    total_credit = cursor.fetchone()[0] or 0
-
-    cursor.execute(
-        "SELECT SUM(amount) FROM transactions WHERE type='Debit'"
-    )
-    total_debit = cursor.fetchone()[0] or 0
-
-    cursor.execute(
-        "SELECT balance FROM users WHERE username=?",
+        """
+        SELECT SUM(amount)
+        FROM transactions
+        WHERE username=? AND type='Credit'
+        """,
         (session["username"],)
     )
+
+    total_credit = cursor.fetchone()[0] or 0
+
+    # Total Debit
+    cursor.execute(
+        """
+        SELECT SUM(amount)
+        FROM transactions
+        WHERE username=? AND type='Debit'
+        """,
+        (session["username"],)
+    )
+
+    total_debit = cursor.fetchone()[0] or 0
+
+    # Current Balance
+    cursor.execute(
+        """
+        SELECT balance
+        FROM users
+        WHERE username=?
+        """,
+        (session["username"],)
+    )
+
     balance = cursor.fetchone()[0]
 
     conn.close()
