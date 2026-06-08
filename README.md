@@ -90,25 +90,6 @@ http://127.0.0.1:5000
 
 ---
 
-## Screenshots
-
-### Login Page
-
-(Add Screenshot Here)
-
-### Dashboard
-
-(Add Screenshot Here)
-
-### Balance Page
-
-(Add Screenshot Here)
-
-### Analytics Page
-
-(Add Screenshot Here)
-
----
 
 ## Future Improvements
 
@@ -118,7 +99,22 @@ http://127.0.0.1:5000
 - Mobile Responsive UI
 - Advanced Analytics
 
----
+# Screenshots
+
+## 1. Login Page
+![Login Page](screenshots/Screenshot%202026-06-08%20123250.png)
+
+## 2. Dashboard
+![Dashboard](screenshots/Screenshot%202026-06-08%20123309.png)
+
+## 3. Balance Page
+![Balance Page](screenshots/Screenshot%202026-06-08%20123328.png)
+
+## 4. Transaction History
+![Transaction History](screenshots/Screenshot%202026-06-08%20123350.png)
+
+## 5. Wallet Analytics
+![Wallet Analytics](screenshots/Screenshot%202026-06-08%20123404.png)
 
 ## Author
 
